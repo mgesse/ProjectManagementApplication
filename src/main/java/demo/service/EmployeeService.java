@@ -1,0 +1,74 @@
+package demo.service;
+
+import demo.model.Employee;
+import demo.repository.EmployeeRepositori;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Calendar;
+import java.util.Date;
+
+/**
+ * Created by poo2 on 16/06/2015.
+ */
+@Service
+public class EmployeeService {
+    //Hem autoinjectat el repositori de servei, instancia un objecte en temps d'execució.
+    @Autowired
+    private EmployeeRepositori employeeRepositori;
+    public void testEmployees(){
+        System.out.println("hola?");
+
+        Calendar calendar = Calendar.getInstance(); //Facthory Method (Mètode estàtic que serveix per a construir objectes)
+        calendar.set(2015, Calendar.JANUARY, 1);
+        Date startDate = calendar.getTime();
+
+        calendar.set(2015, Calendar.MARCH, 1);
+        Date endDate = calendar.getTime();
+
+        calendar.set(2015, Calendar.FEBRUARY, 1);
+        Date dateIncorporation = calendar.getTime();
+
+        Employee employee = new Employee();
+        employee.setName("Miquel");
+        employee.setSurname("Gessé");
+        employee.setSalary(1500.0);
+        employee.setStartDate(new Date());
+
+        //Desem l'objecte
+        employeeRepositori.save(employee);
+
+        Employee employee2 = new Employee();
+        employee2.setName("John");
+        employee2.setSurname("Doe");
+        employee2.setSalary(1400.0);
+        employee2.setStartDate(dateIncorporation);
+
+        //Desem l'objecte
+        employeeRepositori.save(employee2);
+
+        Employee employee3 = new Employee();
+        employee3.setName("Pim");
+        employee3.setSurname("Gessé");
+        employee3.setSalary(1000.0);
+        employee3.setStartDate(new Date());
+
+        //Desem l'objecte
+        employeeRepositori.save(employee3);
+        //Guarda a "gesse" el resultat de cercar pel cognom Gesse i obté la posició 0 de la llista.
+        Employee gesse = employeeRepositori.findBySurname("Gessé").get(0);
+        Employee pum = employeeRepositori.findBySurname("Gessé").get(1);    //No hauria de sortir cap... No hi ha repetits, entenc
+
+        Employee oratge = employeeRepositori.findByStartDateBetween(startDate,endDate).get(0);
+
+
+        //System.out.println(gesse);
+        //System.out.println(pum);
+        //Employee pep = employeeRepositori.findBySalaryEquals(1400.0).get(0);
+        //System.out.println(pep);
+
+        System.out.println(oratge);
+    }
+
+
+}
