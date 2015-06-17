@@ -1,6 +1,9 @@
 package demo.service;
 
+import demo.model.Category;
+import demo.model.Developer;
 import demo.model.Employee;
+import demo.repository.DeveloperRepository;
 import demo.repository.EmployeeRepositori;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +19,9 @@ public class EmployeeService {
     //Hem autoinjectat el repositori de servei, instancia un objecte en temps d'execució.
     @Autowired
     private EmployeeRepositori employeeRepositori;
+    @Autowired
+    private DeveloperRepository developerRepository;
+
     public void testEmployees(){
         System.out.println("hola?");
 
@@ -68,6 +74,37 @@ public class EmployeeService {
         //System.out.println(pep);
 
         System.out.println(oratge);
+
+
+    }
+
+    public void testDevelopers(){
+        Developer desenvolupador1 = new Developer();
+        desenvolupador1.setName("Miquel");
+        desenvolupador1.setSurname("Gessé");
+        desenvolupador1.setSalary(1800.0);
+        desenvolupador1.setStartDate(new Date());
+        desenvolupador1.setCategory(Category.ARCHITECT);
+        developerRepository.save(desenvolupador1);
+
+        Developer desenvolupador2 = new Developer();
+        desenvolupador2.setName("Jaume");
+        desenvolupador2.setSurname("Primer");
+        desenvolupador2.setSalary(1700.0);
+        desenvolupador2.setStartDate(new Date());
+        desenvolupador2.setCategory(Category.SENIOR);
+        developerRepository.save(desenvolupador2);
+
+        Developer desenvolupador3 = new Developer();
+        desenvolupador3.setName("Pim");
+        desenvolupador3.setSurname("Pam");
+        desenvolupador3.setSalary(1600.0);
+        desenvolupador3.setStartDate(new Date());
+        desenvolupador3.setCategory(Category.JUNIOR);
+        developerRepository.save(desenvolupador3);
+
+
+
     }
 
 

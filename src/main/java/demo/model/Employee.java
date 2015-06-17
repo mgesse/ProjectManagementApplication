@@ -8,10 +8,11 @@ import java.util.Date;
  * Created by poo2 on 15/06/2015.
  */
 @Entity //Servirà per a BBDD
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Employee {
     @Id     //CAMP ID del camp de sota
     @GeneratedValue(strategy = GenerationType.AUTO)     //Defineix l'estratègia per a treballar amb el llenguatge del SBGB al que ens connectem. El realitza de manera AUTO en funció de les preferències del SGBD
-    private Long id;
+    protected Long id;
     private String name;
     private String surname;
     private Double salary;

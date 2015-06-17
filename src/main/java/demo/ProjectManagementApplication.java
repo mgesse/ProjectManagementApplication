@@ -14,5 +14,6 @@ public class ProjectManagementApplication {
 
         EmployeeService employeeService = context.getBean(EmployeeService.class);
         employeeService.testEmployees();
+        employeeService.testDevelopers();
     }
 }
