@@ -3,8 +3,10 @@ package demo.service;
 import demo.model.Category;
 import demo.model.Developer;
 import demo.model.Employee;
+import demo.model.Manager;
 import demo.repository.DeveloperRepository;
 import demo.repository.EmployeeRepositori;
+import demo.repository.ManagerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class EmployeeService {
     private EmployeeRepositori employeeRepositori;
     @Autowired
     private DeveloperRepository developerRepository;
+    @Autowired
+    private ManagerRepository managerRepository;
 
     public void testEmployees(){
         System.out.println("hola?");
@@ -67,7 +71,6 @@ public class EmployeeService {
 
         Employee oratge = employeeRepositori.findByStartDateBetween(startDate,endDate).get(0);
 
-
         //System.out.println(gesse);
         //System.out.println(pum);
         //Employee pep = employeeRepositori.findBySalaryEquals(1400.0).get(0);
@@ -103,8 +106,33 @@ public class EmployeeService {
         desenvolupador3.setCategory(Category.JUNIOR);
         developerRepository.save(desenvolupador3);
 
+    }
 
+    public void testManagers(){
+        Manager coord1 = new Manager();
+        coord1.setName("Pau");
+        coord1.setSurname("Pou");
+        coord1.setSalary(2000.0);
+        coord1.setStartDate(new Date());
+        coord1.setBonusSuccess(2.0);
+        managerRepository.save(coord1);
 
+        Manager coord2 = new Manager();
+        coord2.setName("Marta");
+        coord2.setSurname("Pot");
+        coord2.setSalary(6000.0);
+        coord2.setStartDate(new Date());
+        coord2.setBonusSuccess(9.0);
+        managerRepository.save(coord2);
+    }
+
+    public void consultes(){
+
+        Manager managerListSearch = managerRepository.findByBonusSuccessGreaterThan(5.0).get(0);
+        System.out.println(managerListSearch);
+
+        Employee con1 = employeeRepositori.findBySurname("Pot").get(0);
+        System.out.println(con1);
     }
 
 
