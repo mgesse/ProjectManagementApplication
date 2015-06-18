@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
-
+//Fer la relació entre Project i Developer (Propietat - Inversa amb MapBy respectivament)
 /**
  * Created by poo2 on 18/06/2015.
  */
