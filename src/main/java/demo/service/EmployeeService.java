@@ -80,7 +80,7 @@ public class EmployeeService {
 
 
     }
-
+    //holaaaaaaaaaaaaaaa
     public void testDevelopers(){
         Developer desenvolupador1 = new Developer();
         desenvolupador1.setName("Miquel");
@@ -124,6 +124,10 @@ public class EmployeeService {
         coord2.setStartDate(new Date());
         coord2.setBonusSuccess(9.0);
         managerRepository.save(coord2);
+    }
+
+    public void testProject(){
+
     }
 
     public void consultes(){
