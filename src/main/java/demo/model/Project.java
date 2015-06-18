@@ -62,6 +62,14 @@ public class Project {
         this.endDate = endDate;
     }
 
+    public Manager getManager(){
+        return manager;
+    }
+
+    public void setManager(Manager man){
+        this.manager = man;
+    }
+
     @Override
     public String toString() {
         return "Project{" +
