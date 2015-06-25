@@ -1,8 +1,12 @@
 package demo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by poo2 on 17/06/2015.
@@ -14,7 +18,7 @@ public class Project {
     private Long id;
 
     @Column
-    String description;
+    private String description;
 
     @NotNull
     @Column(name = "start_date")
@@ -26,6 +30,19 @@ public class Project {
 
     @ManyToOne
     private Manager manager;
+
+    @JsonIgnore
+    @ManyToMany
+    private Set<Developer> developers = new HashSet<>();
+
+    public Set<Developer> getDevelopers(){
+        return developers;
+    }
+
+    public void setDevelopers(Set<Developer> developers) {
+        this.developers = developers;
+    }
+
 
     public Project() {
     }

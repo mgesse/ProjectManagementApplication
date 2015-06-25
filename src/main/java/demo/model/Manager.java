@@ -13,13 +13,6 @@ import java.util.Set;
 @Entity
 @PrimaryKeyJoinColumn(name="id")
 public class Manager extends Employee {
-    public Double getBonusSuccess() {
-        return bonusSuccess;
-    }
-
-    public void setBonusSuccess(Double bonusSuccess) {
-        this.bonusSuccess = bonusSuccess;
-    }
 
     @Column
     private Double bonusSuccess;
@@ -34,6 +27,15 @@ public class Manager extends Employee {
     public Manager(){
 
     }
+
+    public Double getBonusSuccess() {
+        return bonusSuccess;
+    }
+
+    public void setBonusSuccess(Double bonusSuccess) {
+        this.bonusSuccess = bonusSuccess;
+    }
+
 
     @Override
     public String toString() {

@@ -19,6 +19,8 @@ public class Employee {
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
+
+
     public Employee(String name, String surname, Double salary, Date startDate) {
         this.name = name;
         this.surname = surname;
@@ -53,7 +55,6 @@ public class Employee {
         if (!surname.equals(employee.surname)) return false;
         if (!salary.equals(employee.salary)) return false;
         return startDate.equals(employee.startDate);
-
     }
 
     @Override

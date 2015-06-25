@@ -13,9 +13,9 @@ public interface ManagerRepository extends PagingAndSortingRepository<Manager,Lo
     //List<Manager> findBySurname(@Param("surname") String surname);
     List<Manager> findByBonusSuccessGreaterThan(@Param("bonusSuccess") Double bonusSuccess);
 
-    /*List<Manager> findByNameAndSurname(@Param("name") String name,
+    List<Manager> findByNameAndSurname(@Param("name") String name,
                                        @Param("surname") String surname);
 
-    List<Manager> findByStartDateBetween(@Param("start") Date start,
+    /*List<Manager> findByStartDateBetween(@Param("start") Date start,
                                          @Param("end") Date end);*/
 }
